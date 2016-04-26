@@ -19,7 +19,7 @@
   </sql>
   
   <insert id="insertParam" parameterType="com.entity.Sms">
-		insert into roadinfo
+		insert into t_app_roadinfo
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				ID,
@@ -90,7 +90,7 @@
   <select id="getByParamByPage" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select 
     <include refid="Base_Column_List" />
-    from roadinfo
+    from t_app_roadinfo
     <where>
     <if test="roadinfoType != null">
     and roadinfoType = #{roadinfoType}

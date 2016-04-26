@@ -33,7 +33,7 @@
   </sql>
   
   <insert id="insertParam" parameterType="com.entity.RoadLineCheck">
-		insert into roadLineCheck
+		insert into t_app_roadLineCheck
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				ID,
@@ -176,7 +176,7 @@
   <select id="getByParam" resultMap="BaseResultMap" parameterType="com.entity.RoadLineCheck" >
     select 
     <include refid="Base_Column_List" />
-    from roadLineCheck
+    from t_app_roadLineCheck
     <where>
     </where>
   	order by createDate desc

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.SmsMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Sms" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="modifyDate" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="sendStatus" property="sendStatus" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"  />
+    <result column="smsStatus" property="smsStatus" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+    <result column="sendDate" property="sendDate" jdbcType="TIMESTAMP" />
+    <result column="smsCode" property="smsCode" jdbcType="VARCHAR" />
+    <result column="smsType" property="smsType" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    ID, CREATEDATE, MODIFYDATE, MOBILE, CONTENT, SENDSTATUS, SMSSTATUS, 
+    SENDDATE, SMSCODE, SMSTYPE
+  </sql>
+  
+  <insert id="insertParam" parameterType="com.entity.Sms">
+		insert into sms
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="createDate != null">
+				createDate,
+			</if>
+			<if test="modifyDate != null">
+				modifyDate,
+			</if>
+			<if test="mobile != null">
+				mobile,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+			<if test="sendStatus != null">
+				sendStatus,
+			</if>
+			<if test="smsStatus != null">
+				smsStatus,
+			</if>
+			<if test="sendDate != null">
+				sendDate,
+			</if>
+			<if test="smsCode != null">
+				smsCode,
+			</if>
+			<if test="smsType != null">
+				smsType,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyDate != null">
+				#{modifyDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mobile != null">
+				#{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=VARCHAR},
+			</if>
+			<if test="sendStatus != null">
+				#{sendStatus,jdbcType=INT},
+			</if>
+			<if test="smsStatus != null">
+				#{smsStatus,jdbcType=INT},
+			</if>
+			<if test="sendDate != null">
+				#{sendDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="smsCode != null">
+				#{smsCode,jdbcType=VARCHAR},
+			</if>
+			<if test="smsType != null">
+				#{smsType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler},
+			</if>
+		</trim>
+	</insert>
+  
+  <select id="getByParam" resultMap="BaseResultMap" parameterType="com.entity.Sms" >
+    select 
+    <include refid="Base_Column_List" />
+    from sms
+    <where>
+    <if test="mobile != null">
+    and mobile = #{mobile}
+    </if>
+    <if test="smsType != null">
+    and smsType = #{smsType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}
+    </if>
+    </where>
+  	order by SENDDATE desc
+  </select>
+</mapper>

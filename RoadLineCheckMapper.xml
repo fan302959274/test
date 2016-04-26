@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.RoadLineCheckMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.RoadLineCheck" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="modifyDate" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="roadStationName" property="roadStationName" jdbcType="VARCHAR" />
+    <result column="startPileNum" property="startPileNum" jdbcType="VARCHAR" />
+    <result column="endPileNum" property="endPileNum" jdbcType="VARCHAR" />
+    <result column="roadLineCode" property="roadLineCode" jdbcType="VARCHAR"/>
+    <result column="weather" property="weather" jdbcType="VARCHAR" />
+    <result column="checkStartTime" property="checkStartTime" jdbcType="TIMESTAMP" />
+    <result column="checkEndTime" property="checkEndTime" jdbcType="TIMESTAMP" />
+    <result column="checkLine" property="checkLine" jdbcType="VARCHAR"/>
+    <result column="checkHumer" property="checkHumer" jdbcType="VARCHAR" />
+    <result column="checkResult" property="checkResult" jdbcType="VARCHAR" />
+    <result column="resolveResult" property="resolveResult" jdbcType="VARCHAR" />
+    <result column="checkLeader" property="checkLeader" jdbcType="VARCHAR"/>
+    <result column="needTurnOverItem" property="needTurnOverItem" jdbcType="VARCHAR" />
+    <result column="turnOverLeader" property="turnOverLeader" jdbcType="VARCHAR" />
+    <result column="receiveLeader" property="receiveLeader" jdbcType="VARCHAR" />
+    <result column="receiveDate" property="receiveDate" jdbcType="TIMESTAMP"/>
+    <result column="recordHumer" property="recordHumer" jdbcType="VARCHAR" />
+    <result column="roadAdministratorCheck" property="roadAdministratorCheck" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, createDate, modifyDate, roadStationName, startPileNum, endPileNum, roadLineCode, 
+    weather, checkStartTime, checkEndTime,checkLine,checkHumer,checkResult,resolveResult,
+    checkLeader,needTurnOverItem,turnOverLeader,receiveLeader,receiveDate,recordHumer,
+    roadAdministratorCheck,comments
+  </sql>
+  
+  <insert id="insertParam" parameterType="com.entity.RoadLineCheck">
+		insert into roadLineCheck
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="createDate != null">
+				createDate,
+			</if>
+			<if test="modifyDate != null">
+				modifyDate,
+			</if>
+			<if test="roadStationName != null">
+				roadStationName,
+			</if>
+			<if test="startPileNum != null">
+				startPileNum,
+			</if>
+			<if test="endPileNum != null">
+				endPileNum,
+			</if>
+			<if test="roadLineCode != null">
+				roadLineCode,
+			</if>
+			<if test="weather != null">
+				weather,
+			</if>
+			<if test="checkStartTime != null">
+				checkStartTime,
+			</if>
+			<if test="checkEndTime != null">
+				checkEndTime,
+			</if>
+			<if test="checkLine != null">
+				checkLine,
+			</if>
+			<if test="checkHumer != null">
+				checkHumer,
+			</if>
+			<if test="checkResult != null">
+				checkResult,
+			</if>
+			<if test="resolveResult != null">
+				resolveResult,
+			</if>
+			<if test="checkLeader != null">
+				checkLeader,
+			</if>
+			<if test="needTurnOverItem != null">
+				needTurnOverItem,
+			</if>
+			<if test="turnOverLeader != null">
+				turnOverLeader,
+			</if>
+			<if test="receiveLeader != null">
+				receiveLeader,
+			</if>
+			<if test="receiveDate != null">
+				receiveDate,
+			</if>
+			<if test="recordHumer != null">
+				recordHumer,
+			</if>
+			<if test="roadAdministratorCheck != null">
+				roadAdministratorCheck,
+			</if>
+			<if test="roadAdministratorCheck != null">
+				comments,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyDate != null">
+				#{modifyDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="roadStationName != null">
+				#{roadStationName,jdbcType=VARCHAR},
+			</if>
+			<if test="startPileNum != null">
+				#{startPileNum,jdbcType=VARCHAR},
+			</if>
+			<if test="endPileNum != null">
+				#{endPileNum,jdbcType=VARCHAR},
+			</if>
+			<if test="roadLineCode != null">
+				#{roadLineCode,jdbcType=VARCHAR},
+			</if>
+			<if test="weather != null">
+				#{weather,jdbcType=VARCHAR},
+			</if>
+			<if test="checkStartTime != null">
+				#{checkStartTime,jdbcType=VARCHAR},
+			</if>
+			<if test="checkEndTime != null">
+				#{checkEndTime,jdbcType=VARCHAR},
+			</if>
+			<if test="checkLine != null">
+				#{checkLine,jdbcType=VARCHAR},
+			</if>
+			<if test="checkHumer != null">
+				#{checkHumer,jdbcType=VARCHAR},
+			</if>
+			<if test="checkResult != null">
+				#{checkResult,jdbcType=VARCHAR},
+			</if>
+			<if test="resolveResult != null">
+				#{resolveResult,jdbcType=VARCHAR},
+			</if>
+			<if test="checkLeader != null">
+				#{checkLeader,jdbcType=VARCHAR},
+			</if>
+			<if test="needTurnOverItem != null">
+				#{needTurnOverItem,jdbcType=VARCHAR},
+			</if>
+			<if test="turnOverLeader != null">
+				#{turnOverLeader,jdbcType=VARCHAR},
+			</if>
+			<if test="receiveLeader != null">
+				#{receiveLeader,jdbcType=VARCHAR},
+			</if>
+			<if test="receiveDate != null">
+				#{receiveDate,jdbcType=VARCHAR},
+			</if>
+			<if test="recordHumer != null">
+				#{recordHumer,jdbcType=VARCHAR},
+			</if>
+			<if test="roadAdministratorCheck != null">
+				#{roadAdministratorCheck,jdbcType=VARCHAR},
+			</if>
+			<if test="comments != null">
+				#{comments,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+  
+  
+  <select id="getByParam" resultMap="BaseResultMap" parameterType="com.entity.RoadLineCheck" >
+    select 
+    <include refid="Base_Column_List" />
+    from roadLineCheck
+    <where>
+    </where>
+  	order by createDate desc
+  </select>
+</mapper>

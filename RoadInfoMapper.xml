@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.RoadInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.RoadInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="modifyDate" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="jd" property="jd" jdbcType="VARCHAR" />
+    <result column="wd" property="wd" jdbcType="VARCHAR" />
+    <result column="dz" property="dz" jdbcType="VARCHAR" />
+    <result column="roadInfomation" property="roadInfomation" />
+    <result column="roadinfoType" property="roadinfoType" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"  />
+    <result column="userName" property="userName" jdbcType="VARCHAR" />
+    <result column="userHead" property="userHead" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, createDate, modifyDate, jd, wd, dz, roadInfomation, 
+    roadinfoType, userName, userHead
+  </sql>
+  
+  <insert id="insertParam" parameterType="com.entity.Sms">
+		insert into roadinfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="createDate != null">
+				createDate,
+			</if>
+			<if test="modifyDate != null">
+				modifyDate,
+			</if>
+			<if test="jd != null">
+				jd,
+			</if>
+			<if test="wd != null">
+				wd,
+			</if>
+			<if test="dz != null">
+				dz,
+			</if>
+			<if test="roadInfomation != null">
+				roadInfomation,
+			</if>
+			<if test="roadinfoType != null">
+				roadinfoType,
+			</if>
+			<if test="userName != null">
+				userName,
+			</if>
+			<if test="userHead != null">
+				userHead,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyDate != null">
+				#{modifyDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="jd != null">
+				#{jd,jdbcType=VARCHAR},
+			</if>
+			<if test="wd != null">
+				#{wd,jdbcType=VARCHAR},
+			</if>
+			<if test="dz != null">
+				#{dz,jdbcType=VARCHAR},
+			</if>
+			<if test="roadInfomation != null">
+				#{roadInfomation,jdbcType=VARCHAR},
+			</if>
+			<if test="roadinfoType != null">
+				#{roadinfoType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userHead != null">
+				#{userHead,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+  
+  
+  <select id="getByParamByPage" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from roadinfo
+    <where>
+    <if test="roadinfoType != null">
+    and roadinfoType = #{roadinfoType}
+    </if>
+    and rownum between #{start} and #{end}
+    </where>
+  	order by createDate desc
+  </select>
+</mapper>

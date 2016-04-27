@@ -88,15 +88,16 @@
   
   
   <select id="getByParamByPage" resultMap="BaseResultMap" parameterType="com.entity.RoadInfoParam" >
-    select 
+    select tmp.* from 
+    (select rownum as rn,
     <include refid="Base_Column_List" />
-    from t_app_roadinfo
+    from t_app_roadinfo tar
     <where>
     <if test="roadinfoType != null">
     and roadinfoType = #{roadinfoType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}
     </if>
-    and rownum between #{start} and #{end}
     </where>
-  	order by createDate desc
+  	order by tar.createDate desc)tmp
+  	where tmp.rn between #{start} and #{end}
   </select>
 </mapper>

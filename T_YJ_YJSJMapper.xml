@@ -12,12 +12,12 @@
     <result column="jd" property="jd" jdbcType="DECIMAL" />
     <result column="wd" property="wd" jdbcType="DECIMAL" />
     <result column="sjbt" property="sjbt" jdbcType="VARCHAR" />
-    <result column="xlmc" property="xlmc" jdbcType="VARCHAR" />
+    <result column="sjszxl" property="sjszxl" jdbcType="VARCHAR" />
     <result column="dltxqk" property="dltxqk" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, sj, ryxm, dwxx, sjlx, sjms, tp, 
-    jd,wd, sjbt, xlmc,dltxqk
+    jd,wd, sjbt, sjszxl,dltxqk
   </sql>
   
   <insert id="insertParam" parameterType="com.entity.T_YJ_YJSJ">
@@ -53,8 +53,8 @@
 			<if test="sjbt != null">
 				sjbt,
 			</if>
-			<if test="xlmc != null">
-				xlmc,
+			<if test="sjszxl != null">
+				sjszxl,
 			</if>
 			<if test="dltxqk != null">
 				dltxqk,
@@ -91,8 +91,8 @@
 			<if test="sjbt != null">
 				#{sjbt,jdbcType=VARCHAR},
 			</if>
-			<if test="xlmc != null">
-				#{xlmc,jdbcType=VARCHAR},
+			<if test="sjszxl != null">
+				#{sjszxl,jdbcType=VARCHAR},
 			</if>
 			<if test="dltxqk != null">
 				#{dltxqk,jdbcType=VARCHAR},

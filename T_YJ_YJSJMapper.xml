@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.T_YJ_YJSJMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.T_YJ_YJSJ" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sj" property="sj" jdbcType="TIMESTAMP" />
+    <result column="ryxm" property="ryxm" jdbcType="VARCHAR" />
+    <result column="dwxx" property="dwxx" jdbcType="VARCHAR" />
+    <result column="sjlx" property="sjlx" jdbcType="VARCHAR" />
+    <result column="sjms" property="sjms" jdbcType="VARCHAR" />
+    <result column="tp" property="tp" jdbcType="VARCHAR" />
+    <result column="jd" property="jd" jdbcType="DECIMAL" />
+    <result column="wd" property="wd" jdbcType="DECIMAL" />
+    <result column="sjbt" property="sjbt" jdbcType="VARCHAR" />
+    <result column="xlmc" property="xlmc" jdbcType="VARCHAR" />
+    <result column="dltxqk" property="dltxqk" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sj, ryxm, dwxx, sjlx, sjms, tp, 
+    jd,wd, sjbt, xlmc,dltxqk
+  </sql>
+  
+  <insert id="insertParam" parameterType="com.entity.T_YJ_YJSJ">
+		insert into t_yj_yjsj
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="sj != null">
+				sj,
+			</if>
+			<if test="ryxm != null">
+				ryxm,
+			</if>
+			<if test="dwxx != null">
+				dwxx,
+			</if>
+			<if test="sjlx != null">
+				sjlx,
+			</if>
+			<if test="sjms != null">
+				sjms,
+			</if>
+			<if test="tp != null">
+				tp,
+			</if>
+			<if test="jd != null">
+				jd,
+			</if>
+			<if test="wd != null">
+				wd,
+			</if>
+			<if test="sjbt != null">
+				sjbt,
+			</if>
+			<if test="xlmc != null">
+				xlmc,
+			</if>
+			<if test="dltxqk != null">
+				dltxqk,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="sj != null">
+				#{sj,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ryxm != null">
+				#{ryxm,jdbcType=VARCHAR},
+			</if>
+			<if test="dwxx != null">
+				#{dwxx,jdbcType=VARCHAR},
+			</if>
+			<if test="sjlx != null">
+				#{sjlx,jdbcType=VARCHAR},
+			</if>
+			<if test="sjms != null">
+				#{sjms,jdbcType=VARCHAR},
+			</if>
+			<if test="tp != null">
+				#{tp,jdbcType=VARCHAR},
+			</if>
+			<if test="jd != null">
+				#{jd,jdbcType=DECIMAL},
+			</if>
+			<if test="wd != null">
+				#{wd,jdbcType=DECIMAL},
+			</if>
+			<if test="sjbt != null">
+				#{sjbt,jdbcType=VARCHAR},
+			</if>
+			<if test="xlmc != null">
+				#{xlmc,jdbcType=VARCHAR},
+			</if>
+			<if test="dltxqk != null">
+				#{dltxqk,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+  
+  
+<!--   <select id="getByParamByPage" resultMap="BaseResultMap" parameterType="com.entity.RoadInfoParam" > -->
+<!--     select  -->
+<!--     <include refid="Base_Column_List" /> -->
+<!--     from t_app_roadinfo -->
+<!--     <where> -->
+<!--     <if test="roadinfoType != null"> -->
+<!--     and roadinfoType = #{roadinfoType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler} -->
+<!--     </if> -->
+<!--     and rownum between #{start} and #{end} -->
+<!--     </where> -->
+<!--   	order by createDate desc -->
+<!--   </select> -->
+</mapper>

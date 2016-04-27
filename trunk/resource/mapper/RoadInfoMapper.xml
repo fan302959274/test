@@ -87,13 +87,13 @@
 	</insert>
   
   
-  <select id="getByParamByPage" resultMap="BaseResultMap" parameterType="java.util.Map" >
+  <select id="getByParamByPage" resultMap="BaseResultMap" parameterType="com.entity.RoadInfoParam" >
     select 
     <include refid="Base_Column_List" />
     from t_app_roadinfo
     <where>
     <if test="roadinfoType != null">
-    and roadinfoType = #{roadinfoType}
+    and roadinfoType = #{roadinfoType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}
     </if>
     and rownum between #{start} and #{end}
     </where>

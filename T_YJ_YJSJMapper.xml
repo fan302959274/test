@@ -103,7 +103,7 @@
   
 	 <select id="getByParamByPage" resultMap="BaseResultMap" parameterType="java.util.Map" >
 	   select tmp.* from 
-	   (select Row_Number() OVER (ORDER BY createDate desc) rn,
+	   (select Row_Number() OVER (ORDER BY sj desc) rn,
 	   <include refid="Base_Column_List" />
 	   from t_yj_yjsj t
 	   <where>

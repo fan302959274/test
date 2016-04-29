@@ -103,12 +103,12 @@
   
 	 <select id="getByParamByPage" resultMap="BaseResultMap" parameterType="java.util.Map" >
 	   select tmp.* from 
-	   (select rownum as rn,
+	   (select Row_Number() OVER (ORDER BY createDate desc) rn,
 	   <include refid="Base_Column_List" />
 	   from t_yj_yjsj t
 	   <where>
 	   </where>
-	 	order by t.sj desc) tmp
+	 	) tmp
 	 	where tmp.rn between #{start} and #{end}
 	 </select>
 </mapper>

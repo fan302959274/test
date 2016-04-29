@@ -89,7 +89,7 @@
   
   <select id="getByParamByPage" resultMap="BaseResultMap" parameterType="com.entity.RoadInfoParam" >
     select tmp.* from 
-    (select rownum as rn,
+    (select Row_Number() OVER (ORDER BY createDate desc) rn,
     <include refid="Base_Column_List" />
     from t_app_roadinfo tar
     <where>
@@ -97,7 +97,7 @@
     and roadinfoType = #{roadinfoType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}
     </if>
     </where>
-  	order by tar.createDate desc)tmp
+  	)tmp
   	where tmp.rn between #{start} and #{end}
   </select>
 </mapper>

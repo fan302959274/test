@@ -109,6 +109,5 @@
 	   <where>
 	   </where>
 	 	) tmp
-	 	where tmp.rn between #{start} and #{end}
 	 </select>
 </mapper>

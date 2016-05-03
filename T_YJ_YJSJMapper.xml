@@ -23,9 +23,7 @@
   <insert id="insertParam" parameterType="com.entity.T_YJ_YJSJ">
 		insert into t_yj_yjsj
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				ID,
-			</if>
+			ID,
 			<if test="sj != null">
 				sj,
 			</if>
@@ -61,9 +59,7 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=BIGINT},
-			</if>
+		    t_yj_yjsjid.nextval,
 			<if test="sj != null">
 				#{sj,jdbcType=TIMESTAMP},
 			</if>

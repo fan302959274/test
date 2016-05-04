@@ -14,13 +14,17 @@
     <result column="sjbt" property="sjbt" jdbcType="VARCHAR" />
     <result column="sjszxl" property="sjszxl" jdbcType="VARCHAR" />
     <result column="dltxqk" property="dltxqk" jdbcType="VARCHAR" />
+    <result column="sjly" property="sjly" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, sj, ryxm, dwxx, sjlx, sjms, tp, 
-    jd,wd, sjbt, sjszxl,dltxqk
+    jd,wd, sjbt, sjszxl,dltxqk,sjly
   </sql>
   
   <insert id="insertParam" parameterType="com.entity.T_YJ_YJSJ">
+  		<selectKey resultType="LONG" order="BEFORE" keyProperty="id">  
+       		SELECT t_yj_yjsjid.nextval as id from DUAL
+   		</selectKey> 
 		insert into t_yj_yjsj
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			ID,
@@ -57,9 +61,12 @@
 			<if test="dltxqk != null">
 				dltxqk,
 			</if>
+			<if test="sjly != null">
+				sjly,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-		    t_yj_yjsjid.nextval,
+		    #{id,jdbcType=DECIMAL},
 			<if test="sj != null">
 				#{sj,jdbcType=TIMESTAMP},
 			</if>
@@ -93,6 +100,9 @@
 			<if test="dltxqk != null">
 				#{dltxqk,jdbcType=VARCHAR},
 			</if>
+			<if test="sjly != null">
+				#{sjly,jdbcType=VARCHAR},
+			</if>
 		</trim>
 	</insert>
   
@@ -103,6 +113,7 @@
 	   <include refid="Base_Column_List" />
 	   from t_yj_yjsj t
 	   <where>
+	   and sjly = 1
 	   </where>
 	 	) tmp
 	 </select>

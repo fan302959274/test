@@ -1,4 +1,4 @@
 
 public class Cff {
-	private Stirng name;
+	private Stirng name  ;
 }

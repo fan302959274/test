@@ -1,4 +1,4 @@
 
 public class Cff {
-	private String namemaster;
+	private String namemaster01;
 }
